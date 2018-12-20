@@ -6,7 +6,7 @@ const port = process.env.port || 3004;
 app.use(express.static('public'))
 
 app.get('/related', (req, res, next) => {
-    db.query('SELECT id, name, blurb FROM projects', (err, result) => {
+    db.query('SELECT name, blurb, fullImg FROM projects', (err, result) => {
         if (err) {
             return next(err)
         } else {
