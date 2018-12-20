@@ -75,13 +75,17 @@ class App extends React.Component {
     }
 
     fetchItems() {
-        fetch('http://localhost:3004')
-            .then((data) => {
-                console.log('success getting items', data);
+        fetch('http://localhost:3004/related')
+            .then(data => data.json())
+            .then(json => {
+                let newState = {};
+                newState.items = json;
+                this.setState(newState)
             })
-            .catch((error) => {
-                console.log('error getting items', error);
+            .catch(error => {
+                console.log('error', error)
             })
+
     }
 
 
@@ -90,11 +94,13 @@ class App extends React.Component {
         return (
             <div>
                 <div>
-                    <h3>{this.state.items[3].name}</h3>
+                    <button onClick={this.fetchItems}></button>
+
+                    {/* <h3>{this.state.items[3].name}</h3>
                     <h5>{this.state.items[3].blurb}</h5>
                     <img src={this.state.items[3].fullImg}></img>
                     <p>Goal: {this.state.items[3].goal}</p>
-                    <p>Pledged: {this.state.items[3].pledged}</p>
+                    <p>Pledged: {this.state.items[3].pledged}</p> */}
                 </div>
             </div>
         )

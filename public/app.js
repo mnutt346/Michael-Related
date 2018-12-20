@@ -69,10 +69,12 @@ class App extends React.Component {
     }
 
     fetchItems() {
-        fetch('http://localhost:3004').then(data => {
-            console.log('success getting items', data);
+        fetch('http://localhost:3004/related').then(data => data.json()).then(json => {
+            let newState = {};
+            newState.items = json;
+            this.setState(newState);
         }).catch(error => {
-            console.log('error getting items', error);
+            console.log('error', error);
         });
     }
 
@@ -83,29 +85,7 @@ class App extends React.Component {
             React.createElement(
                 "div",
                 null,
-                React.createElement(
-                    "h3",
-                    null,
-                    this.state.items[3].name
-                ),
-                React.createElement(
-                    "h5",
-                    null,
-                    this.state.items[3].blurb
-                ),
-                React.createElement("img", { src: this.state.items[3].fullImg }),
-                React.createElement(
-                    "p",
-                    null,
-                    "Goal: ",
-                    this.state.items[3].goal
-                ),
-                React.createElement(
-                    "p",
-                    null,
-                    "Pledged: ",
-                    this.state.items[3].pledged
-                )
+                React.createElement("button", { onClick: this.fetchItems })
             )
         );
     }
