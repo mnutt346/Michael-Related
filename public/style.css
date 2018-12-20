@@ -1,7 +1,14 @@
-.item-name {
-    font-family: arial-black;
+#Info {
+  display: block;
 }
 
-.blurb {
-    font-family: Arial
+#CountDown {
+  margin-left: 5px;
+  display: inline-block;
 }
+
+#Related {
+  margin: 10%;
+  display: block;
+}
+

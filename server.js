@@ -1,22 +1,12 @@
 const express = require('express');
-const db = require('./db');
+const morgan = require('morgan');
+const path = require('path');
 const app = express();
-const port = process.env.port || 3004;
+const port = process.env.PORT || 3000;
 
-app.use(express.static('public'))
+app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/related', (req, res, next) => {
-    db.query('SELECT name, blurb, fullImg FROM projects', (err, result) => {
-        if (err) {
-            return next(err)
-        } else {
-            console.log('success')
-            res.send(result.rows)
-        }
-    })
-})
-
-app.listen(port, 'localhost');
-
-console.log(`server listening on port ${port}`)
-
+app.listen(port, () => {
+  console.log(`server running at: http://localhost:${port}`);
+});
