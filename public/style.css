@@ -1,14 +1,13 @@
-#Info {
-  display: block;
+.name {
+  font-family: Arial;
+  font-size: 16px;
 }
 
-#CountDown {
-  margin-left: 5px;
-  display: inline-block;
+.blurb {
+  font-family: Arial;
+  font-size: 12px;
 }
 
-#Related {
-  margin: 10%;
-  display: block;
+.item:hover {
+  background-color: whitesmoke;
 }
-
