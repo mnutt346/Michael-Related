@@ -8,18 +8,15 @@
 </head>
 
 <body>
-
+  <div id='Pledge'></div>
   <div id="Related"></div>
-
   <script src="/lib/react.development.js"></script>
   <script src="/lib/react-dom.development.js"></script>
+  <script src="http://localhost:3003/app.js"></script>
   <script src="http://localhost:3004/app.js"></script>
   <script>
-    ReactDOM.render(
-      React.createElement(Related),
-      document.getElementById('Related')
-    );
-
+    ReactDOM.render(React.createElement(Pledge), document.getElementById('Pledge'));
+    ReactDOM.render(React.createElement(Related), document.getElementById('Related'));
   </script>
 </body>
 

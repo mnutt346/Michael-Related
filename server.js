@@ -14,7 +14,7 @@ app.get('/comments', (req, res) => {
       res.status(200).send(response.data);
     })
     .catch(error => {
-      console.log('error getting comments from proxy server', error);
+      console.log('error getting comments from proxy server');
       res.sendStatus(500);
     })
 })
@@ -25,7 +25,7 @@ app.post('/comments', (req, res) => {
       res.status(201).send(response.data)
     })
     .catch(error => {
-      console.log('error posting to comments from proxy server', error);
+      console.log('error posting to comments from proxy server');
       res.sendStatus(500)
     })
 
@@ -37,7 +37,7 @@ app.get('/projects', (req, res) => {
       res.status(200).send(response.data);
     })
     .catch(error => {
-      console.log('error getting projects from proxy server', error);
+      console.log('error getting projects from proxy server');
       res.sendStatus(500)
     })
 })
@@ -49,7 +49,7 @@ app.get('/pledges', (req, res) => {
 
     })
     .catch(error => {
-      console.log('error getting pledges from proxy server', error)
+      console.log('error getting pledges from proxy server')
       res.sendStatus(500);
     })
 })
@@ -60,7 +60,7 @@ app.post('/pledges', (req, res) => {
       res.status(201).send(response.data);
     })
     .catch(error => {
-      console.log('error posting to pledges from proxy server', error)
+      console.log('error posting to pledges from proxy server')
       res.sendStatus(500)
     })
 })
@@ -71,7 +71,7 @@ app.get('/related', (req, res) => {
       res.status(200).send(response.data);
     })
     .catch(error => {
-      console.log('error getting related from proxy server', error);
+      console.log('error getting related from proxy server');
       res.sendStatus(500);
     })
 })
