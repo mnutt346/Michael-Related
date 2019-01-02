@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const path = require('path');
 const app = express();
 const axios = require('axios')
-//const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const config = require('./config');
 
 app.use(morgan('dev'));
