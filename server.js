@@ -3,13 +3,23 @@ const morgan = require('morgan');
 const path = require('path');
 const app = express();
 const axios = require('axios')
-const port = process.env.PORT || 3000;
+//const port = process.env.PORT || 3000;
+const config = require('./config');
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/comments', (req, res) => {
-  axios.get('http://localhost:3001/comments', { params: req.query })
+const [commentsRoute, projectsRoute, pledgesRoute, relatedRoute] = [
+  `http://${config.COMMENTS_HOST}:${config.COMMENTS_PORT}`,
+  `http://${config.PROJECTS_HOST}:${config.PROJECTS_PORT}`,
+  `http://${config.PLEDGES_HOST}:${config.PLEDGES_PORT}`,
+  `http://${config.RELATED_HOST}:${config.RELATED_PORT}`
+];
+
+// Comments
+
+app.get('/comments/:id', (req, res) => {
+  axios.get(`${commentsRoute}/comments/${req.params.id}`, { params: req.query })
     .then(response => {
       res.status(200).send(response.data);
     })
@@ -20,7 +30,7 @@ app.get('/comments', (req, res) => {
 })
 
 app.post('/comments', (req, res) => {
-  axios.post('http://localhost:3001/comments', req.body)
+  axios.post(`${commentsRoute}/comments`, req.body)
     .then(response => {
       res.status(201).send(response.data)
     })
@@ -28,11 +38,12 @@ app.post('/comments', (req, res) => {
       console.log('error posting to comments from proxy server');
       res.sendStatus(500)
     })
-
 })
 
-app.get('/projects', (req, res) => {
-  axios.get('http://localhost:3002/projects', { params: req.query })
+// Projects
+
+app.get('/projects:id', (req, res) => {
+  axios.get(`${projectsRoute}/projects/${req.params.id}`, { params: req.query })
     .then(response => {
       res.status(200).send(response.data);
     })
@@ -42,8 +53,10 @@ app.get('/projects', (req, res) => {
     })
 })
 
+// Pledges
+
 app.get('/pledges', (req, res) => {
-  axios.get('http://localhost:3003/pledges', { params: req.query })
+  axios.get(`${pledgesRoute}/pledges/${req.params.id}`, { params: req.query })
     .then(response => {
       res.status(200).send(response.data);
 
@@ -55,7 +68,7 @@ app.get('/pledges', (req, res) => {
 })
 
 app.post('/pledges', (req, res) => {
-  axios.post('http://localhost:3003/pledges', req.body)
+  axios.post(`${pledgesRoute}/pledges`, req.body)
     .then(response => {
       res.status(201).send(response.data);
     })
@@ -65,8 +78,10 @@ app.post('/pledges', (req, res) => {
     })
 })
 
+// Related
+
 app.get('/related', (req, res) => {
-  axios.get('http://ec2-18-216-54-110.us-east-2.compute.amazonaws.com:3004/related', { params: req.query })
+  axios.get(`${relatedRoute}/related/${req.params.id}`, { params: req.query })
     .then(response => {
       res.status(200).send(response.data);
     })
