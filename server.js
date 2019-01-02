@@ -66,7 +66,7 @@ app.post('/pledges', (req, res) => {
 })
 
 app.get('/related', (req, res) => {
-  axios.get('http://ec2-18-216-54-110.us-east-2.compute.amazonaws.com/related', { params: req.query })
+  axios.get('http://ec2-18-216-54-110.us-east-2.compute.amazonaws.com:3004/related', { params: req.query })
     .then(response => {
       res.status(200).send(response.data);
     })
