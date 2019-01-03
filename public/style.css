@@ -1,0 +1,13 @@
+.name {
+  font-family: Arial;
+  font-size: 16px;
+}
+
+.blurb {
+  font-family: Arial;
+  font-size: 12px;
+}
+
+.item:hover {
+  background-color: whitesmoke;
+}
