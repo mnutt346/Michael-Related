@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//import Pledge from '../../../Mike-JumpStart-Pledge/client/components/pledge.jsx';
 
 class App extends Component {
     constructor(props) {
@@ -8,6 +9,7 @@ class App extends Component {
     render() {
         return (
             <div>
+                <Pledge />
                 <Related />
             </div>
         )
