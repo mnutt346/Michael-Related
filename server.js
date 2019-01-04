@@ -1,10 +1,16 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+//const bodyParser = require('body-parser');
 const app = express();
 const axios = require('axios')
 const port = process.env.PORT || 3000;
 const config = require('./config');
+
+//app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+//app.use(bodyParser.json())
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -53,10 +59,15 @@ app.get('/projects:id', (req, res) => {
     })
 })
 
+<<<<<<< HEAD
 // Pledges
 
 app.get('/pledges', (req, res) => {
   axios.get(`${pledgesRoute}/pledges/${req.params.id}`, { params: req.query })
+=======
+app.get('/pledges/:id', (req, res) => {
+  axios.get('http://localhost:3003/pledges/' + req.params.id)
+>>>>>>> 36a5add29600d34f6b64673ac1ab36a99c3ace0c
     .then(response => {
       res.status(200).send(response.data);
 
@@ -81,7 +92,14 @@ app.post('/pledges', (req, res) => {
 // Related
 
 app.get('/related', (req, res) => {
+<<<<<<< HEAD
   axios.get(`${relatedRoute}/related/${req.params.id}`, { params: req.query })
+=======
+  //console.log('req.params.id', req.params.id)
+  axios.get('http://localhost:3004/related/2') // + req.params.id)
+
+    //axios.get('http://localhost:3004/related', { params: req.query })
+>>>>>>> 36a5add29600d34f6b64673ac1ab36a99c3ace0c
     .then(response => {
       res.status(200).send(response.data);
     })
