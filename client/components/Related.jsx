@@ -1,5 +1,6 @@
 import React from "react";
 import Axios from "axios";
+import Project from "./Project.jsx";
 
 // const itemStyle = {
 //   width: '60%',
@@ -43,13 +44,12 @@ export default class Related extends React.Component {
           {this.state.projects.map((project, i) => {
             for (let j = 0; j < 5; j++) {
               return (
-                <div className="project" id={i}>
-                  <div className="project-image">
-                    <img src={project.thumbnail} />
-                  </div>
-                  <span className="project-name">{project.name}</span>
-                  <span className="project-blurb">{project.blurb}</span>
-                </div>
+                <Project
+                  key={i}
+                  src={project.thumbnail}
+                  name={project.name}
+                  blurb={project.blurb}
+                />
               );
             }
           })}
