@@ -8,27 +8,6 @@ class App extends Component {
     this.state = {
       id: Math.floor(Math.random() * 10000000)
     };
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  //   componentDidMount() {
-  //     fetch(`http://localhost:3004/related`)
-  //       .then(data => data.json())
-  //       .then(json => {
-  //         let newState = {};
-  //         newState.items = json;
-  //         this.setState(newState);
-  //       })
-  //       .catch(error => {
-  //         console.log("error fetching data", error);
-  //       });
-  //   }
-
-  handleClick(e, ID) {
-    console.log(ID);
-    this.setState({
-      id: ID
-    });
   }
 
   render() {
