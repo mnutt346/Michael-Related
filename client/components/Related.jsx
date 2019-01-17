@@ -20,20 +20,19 @@ export default class Related extends React.Component {
   constructor(props) {
     super(props);
     this.state = { projects: [] };
-    // this.handleClick = this.handleClick.bind(this);
   }
 
-  // handleClick(e) {
-  //   console.log(e.target)
-  // }
-
-  // url - http://ec2-18-216-54-110.us-east-2.compute.amazonaws.com
+  // url = "http://ec2-3-89-140-227.compute-1.amazonaws.com/related";
 
   componentDidMount() {
-    Axios.get("http://localhost:3004/related").then(response => {
-      console.log("RESPONSE TO GET /related: ", response);
-      this.setState({ projects: response.data });
-    });
+    Axios.get("http://localhost:3004/related")
+      .then(response => {
+        console.log("RESPONSE TO GET /related: ", response);
+        this.setState({ projects: response.data });
+      })
+      .catch(err => {
+        console.log("ERROR IN AXIOS GET /related: ", err);
+      });
   }
 
   render() {
