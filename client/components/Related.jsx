@@ -22,10 +22,10 @@ export default class Related extends React.Component {
     this.state = { projects: [] };
   }
 
-  // url = "http://ec2-3-89-140-227.compute-1.amazonaws.com/related";
+  // url = "http://ec2-3-86-26-182.compute-1.amazonaws.com/related";
 
   componentDidMount() {
-    Axios.get("http://localhost:3004/related")
+    Axios.get("http://ec2-3-86-26-182.compute-1.amazonaws.com/related")
       .then(response => {
         console.log("RESPONSE TO GET /related: ", response);
         this.setState({ projects: response.data });
